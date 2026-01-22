@@ -1649,66 +1649,47 @@ button {
 	}
 
 
-//* =================================================
-   CUSTOM PROJECT LAYOUT (Zigzag & Overflow Fix)
-   Add this to the very bottom of main.css
+/* =================================================
+   VERTICAL PROJECT LAYOUT (Image Top / Text Bottom)
    ================================================= */
 
-/* 1. Base Container for Image + Text */
 .project-row {
-    display: flex;           /* Enables side-by-side layout */
-    align-items: center;     /* Vertically centers text */
-    gap: 2rem;               /* Space between image and text */
-    margin-bottom: 3rem;     /* Space between projects */
+    display: flex;
+    flex-direction: column; /* Stacks image on top of text */
+    align-items: center;    /* Centers the image horizontally */
+    gap: 1.5rem;            /* Space between image and text */
+    margin-bottom: 3rem;    /* Space between projects */
 }
 
-/* 2. The Zigzag Magic (for the second project) */
+/* We don't need the reverse/zigzag anymore, so this ensures
+   it stays stacked even if the HTML still says 'reverse' */
 .project-row.reverse {
-    flex-direction: row-reverse; /* Swaps Image to the Right */
+    flex-direction: column; 
 }
 
-/* 3. The Image Container (STRICT SIZE CONTROLS) */
+/* CONTROL THE IMAGE SIZE */
 .project-image {
-    flex: 0 0 275px;           /* Sets width to 40% of the row */
-    max-width: 275px;        /* Never wider than 300px */
-    min-width: 275px;        /* Never narrower than 200px */
-    overflow: hidden;        /* Cuts off anything sticking out */
+    width: 100%;            /* Allow container to span width for centering */
+    max-width: 400px !important; /* LIMIT SIZE: Change this number to make image bigger/smaller */
+    margin: 0 auto;         /* Centers the box */
 }
 
-/* 4. Force the Image to behave */
 .project-image .image {
     display: block;
     width: 100%;
-    margin: 0;
-    background: none;        /* Removes template overlay effects if needed */
+    border-radius: 4px;
+    overflow: hidden;
 }
 
-/* 5. The actual image file */
 .project-image .image img {
-    width: 100%;             /* Fill the container */
-    max-width: 100%;         /* CRITICAL: Stops overflow */
-    height: auto;            /* Keeps aspect ratio */
+    width: 100%;            /* Fills the max-width container */
+    height: auto;
     object-fit: cover;
     display: block;
 }
 
-/* 6. Text Content */
+/* TEXT SETTINGS */
 .project-content {
-    flex: 1;                 /* Takes up remaining space */
-}
-
-/* 7. Mobile Responsive (Stack vertically on phones) */
-@media screen and (max-width: 736px) {
-    .project-row, 
-    .project-row.reverse {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .project-image {
-        flex: 0 0 100%;
-        width: 100%;
-        max-width: 100%;
-        margin-bottom: 1.5rem;
-    }
+    width: 100%;            /* Text takes full width */
+    text-align: left;       /* Aligns text to the left (easier to read) */
 }
