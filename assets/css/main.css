@@ -1675,21 +1675,13 @@ button {
     overflow: hidden;        /* Cuts off anything sticking out */
 }
 
-/* 4. Force the Image to behave */
-.project-image .image {
-    display: block;
-    width: 100%;
-    margin: 0;
-    background: none;        /* Removes template overlay effects if needed */
-}
-
-/* 5. The actual image file */
+/* 2. FORCE THE IMAGE TO FIT THE CONTAINER */
 .project-image .image img {
-    width: 100%;             /* Fill the container */
-    max-width: 100%;         /* CRITICAL: Stops overflow */
-    height: auto;            /* Keeps aspect ratio */
-    object-fit: cover;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
     display: block;
+    object-fit: cover;
 }
 
 /* 6. Text Content */
