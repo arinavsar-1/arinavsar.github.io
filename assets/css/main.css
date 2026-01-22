@@ -1647,3 +1647,45 @@ button {
 	body.is-preload #footer {
 		opacity: 0;
 	}
+
+
+/* Container to align items side-by-side */
+.research-row {
+    display: flex;
+    align-items: flex-start; /* Aligns to top. Use 'center' to align to middle */
+    gap: 2rem;               /* Space between image and text */
+    margin-bottom: 2rem;
+}
+
+/* Constrain the image width so it doesn't take over */
+.research-image {
+    flex: 0 0 40%;           /* Image takes up 40% of the width */
+    max-width: 300px;        /* Optional: Limits max size of image */
+}
+
+/* Ensure the image inside scales correctly */
+.research-image .image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 4px;      /* Optional: Rounded corners match the theme */
+}
+
+/* Text takes up the remaining space */
+.research-content {
+    flex: 1;
+}
+
+/* --- Mobile View --- */
+/* On phones, stack them vertically again so it's readable */
+@media screen and (max-width: 736px) {
+    .research-row {
+        flex-direction: column;
+    }
+    .research-image {
+        flex: 0 0 100%;
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 1.5rem;
+    }
+}
