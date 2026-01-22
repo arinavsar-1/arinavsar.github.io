@@ -1670,7 +1670,7 @@ button {
 /* CONTROL THE IMAGE SIZE */
 .project-image {
     width: 100%;            /* Allow container to span width for centering */
-    max-width: 400px !important; /* LIMIT SIZE: Change this number to make image bigger/smaller */
+    max-width: 600px !important; /* LIMIT SIZE: Change this number to make image bigger/smaller */
     margin: 0 auto;         /* Centers the box */
 }
 
