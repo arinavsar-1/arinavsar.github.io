@@ -1649,7 +1649,7 @@ button {
 	}
 
 
-/* =================================================
+//* =================================================
    CUSTOM PROJECT LAYOUT (Zigzag & Overflow Fix)
    Add this to the very bottom of main.css
    ================================================= */
@@ -1670,17 +1670,26 @@ button {
 /* 3. The Image Container (STRICT SIZE CONTROLS) */
 .project-image {
     flex: 0 0 40%;           /* Sets width to 40% of the row */
-    max-width: 500px;        /* Never wider than 300px */
-    min-width: 500px;        /* Never narrower than 200px */
+    max-width: 300px;        /* Never wider than 300px */
+    min-width: 200px;        /* Never narrower than 200px */
+    overflow: hidden;        /* Cuts off anything sticking out */
 }
 
-/* 2. FORCE THE IMAGE TO FIT THE CONTAINER */
-.project-image .image img {
-    width: 100% !important;
-    max-width: 100% !important;
-    height: auto !important;
+/* 4. Force the Image to behave */
+.project-image .image {
     display: block;
+    width: 100%;
+    margin: 0;
+    background: none;        /* Removes template overlay effects if needed */
+}
+
+/* 5. The actual image file */
+.project-image .image img {
+    width: 100%;             /* Fill the container */
+    max-width: 100%;         /* CRITICAL: Stops overflow */
+    height: auto;            /* Keeps aspect ratio */
     object-fit: cover;
+    display: block;
 }
 
 /* 6. Text Content */
