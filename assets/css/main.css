@@ -1669,10 +1669,9 @@ button {
 
 /* 3. The Image Container (STRICT SIZE CONTROLS) */
 .project-image {
-    flex: 0 0 5%;           /* Sets width to 40% of the row */
+    flex: 0 0 40%;           /* Sets width to 40% of the row */
     max-width: 500px;        /* Never wider than 300px */
     min-width: 500px;        /* Never narrower than 200px */
-    overflow: hidden;        /* Cuts off anything sticking out */
 }
 
 /* 2. FORCE THE IMAGE TO FIT THE CONTAINER */
