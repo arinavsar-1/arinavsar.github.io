@@ -1685,7 +1685,7 @@ button {
 
 /* 5. The actual image file */
 .project-image .image img {
-    width: 100%;             /* Fill the container */
+    width: 50%;             /* Fill the container */
     max-width: 100%;         /* CRITICAL: Stops overflow */
     height: auto;            /* Keeps aspect ratio */
     object-fit: cover;
