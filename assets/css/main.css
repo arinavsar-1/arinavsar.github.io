@@ -1649,43 +1649,64 @@ button {
 	}
 
 
-/* Container to align items side-by-side */
-.research-row {
+//* --- Base Row Settings --- */
+.project-row {
     display: flex;
-    align-items: flex-start; /* Aligns to top. Use 'center' to align to middle */
-    gap: 2rem;               /* Space between image and text */
+    align-items: center;    /* Vertically center the text */
+    gap: 2rem;
     margin-bottom: 2rem;
 }
 
-/* Constrain the image width so it doesn't take over */
-.research-image {
-    flex: 0 0 40%;           /* Image takes up 40% of the width */
-    max-width: 300px;        /* Optional: Limits max size of image */
+/* --- THE ZIGZAG MAGIC --- */
+/* This flips the second row so image is on the right */
+.project-row.reverse {
+    flex-direction: row-reverse;
 }
 
-/* Ensure the image inside scales correctly */
-.research-image .image img {
+/* --- Strict Image Constraints (The Overflow Fix) --- */
+.project-image {
+    flex: 0 0 35%;          /* Fixed width of 35% */
+    max-width: 300px;       /* Max width cap */
+    min-width: 150px;       /* Min width safety */
+    overflow: hidden;       /* Safety cut-off */
+}
+
+/* Ensure the span behaves as a block */
+.project-image .image {
+    display: block;
     width: 100%;
+    margin: 0;
+}
+
+/* Ensure the image file behaves */
+.project-image .image img {
+    width: 100%;
+    max-width: 100%;        /* Crucial fix */
     height: auto;
     object-fit: cover;
-    border-radius: 4px;      /* Optional: Rounded corners match the theme */
+    display: block;
+    border-radius: 4px;     /* Optional styling */
 }
 
-/* Text takes up the remaining space */
-.research-content {
+/* --- Text Content --- */
+.project-content {
     flex: 1;
 }
 
-/* --- Mobile View --- */
-/* On phones, stack them vertically again so it's readable */
+/* --- Mobile Responsiveness --- */
 @media screen and (max-width: 736px) {
-    .research-row {
+    /* On mobile, force BOTH rows to stack vertically */
+    .project-row, 
+    .project-row.reverse {
         flex-direction: column;
+        align-items: flex-start;
     }
-    .research-image {
+
+    /* Reset image width for mobile */
+    .project-image {
         flex: 0 0 100%;
         width: 100%;
         max-width: 100%;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
     }
 }
