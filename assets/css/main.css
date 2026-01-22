@@ -1649,3 +1649,66 @@ button {
 	}
 
 
+/* =================================================
+   CUSTOM PROJECT LAYOUT (Zigzag & Overflow Fix)
+   Add this to the very bottom of main.css
+   ================================================= */
+
+/* 1. Base Container for Image + Text */
+.project-row {
+    display: flex;           /* Enables side-by-side layout */
+    align-items: center;     /* Vertically centers text */
+    gap: 2rem;               /* Space between image and text */
+    margin-bottom: 3rem;     /* Space between projects */
+}
+
+/* 2. The Zigzag Magic (for the second project) */
+.project-row.reverse {
+    flex-direction: row-reverse; /* Swaps Image to the Right */
+}
+
+/* 3. The Image Container (STRICT SIZE CONTROLS) */
+.project-image {
+    flex: 0 0 40%;           /* Sets width to 40% of the row */
+    max-width: 300px;        /* Never wider than 300px */
+    min-width: 200px;        /* Never narrower than 200px */
+    overflow: hidden;        /* Cuts off anything sticking out */
+}
+
+/* 4. Force the Image to behave */
+.project-image .image {
+    display: block;
+    width: 100%;
+    margin: 0;
+    background: none;        /* Removes template overlay effects if needed */
+}
+
+/* 5. The actual image file */
+.project-image .image img {
+    width: 100%;             /* Fill the container */
+    max-width: 100%;         /* CRITICAL: Stops overflow */
+    height: auto;            /* Keeps aspect ratio */
+    object-fit: cover;
+    display: block;
+}
+
+/* 6. Text Content */
+.project-content {
+    flex: 1;                 /* Takes up remaining space */
+}
+
+/* 7. Mobile Responsive (Stack vertically on phones) */
+@media screen and (max-width: 736px) {
+    .project-row, 
+    .project-row.reverse {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .project-image {
+        flex: 0 0 100%;
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 1.5rem;
+    }
+}
